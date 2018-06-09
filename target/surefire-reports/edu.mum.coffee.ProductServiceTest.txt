@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: edu.mum.coffee.ProductServiceTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 4.238 sec <<< FAILURE! - in edu.mum.coffee.ProductServiceTest
+testSave(edu.mum.coffee.ProductServiceTest)  Time elapsed: 0.676 sec  <<< ERROR!
+java.lang.Error: Unresolved compilation problem: 
+	The method getProduct(Long) in the type ProductService is not applicable for the arguments (int)
+
+	at edu.mum.coffee.ProductServiceTest.testSave(ProductServiceTest.java:70)
+
+testGetProduct(edu.mum.coffee.ProductServiceTest)  Time elapsed: 1.047 sec  <<< ERROR!
+java.lang.Error: Unresolved compilation problem: 
+	The method getProduct(Long) in the type ProductService is not applicable for the arguments (int)
+
+	at edu.mum.coffee.ProductServiceTest.testGetProduct(ProductServiceTest.java:78)
+
