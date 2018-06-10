@@ -18,8 +18,8 @@ public interface ProductRepository  extends CrudRepository<Product, Integer>{
 	public List<Product> findByProductType(ProductType productType); 
 	public List<Product> findByPriceBetween(Double minPrice, Double maxPrice);
 	
-	@Query(value= "delete from Product p where p.id=:id")
-	public void delete(int id);
+	//@Query(value= "delete from Product p where p.id=:id")
+	//public void delete(int id);
 	
 	 
 	@Query(value= "SELECT p from Product p WHERE p.id =:pId")

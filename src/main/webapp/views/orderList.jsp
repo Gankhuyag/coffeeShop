@@ -43,31 +43,26 @@
 
 	});
 </script>
-<title>Products currently in the Coffee Shop</title>
+<title>Orders currently in the Coffee Shop</title>
 </head>
 <body>
-	<h2>Products currently in the Coffee shop</h2>
+	<h2>Orders currently in the Coffee shop</h2>
 	<table>
-		<c:forEach var="product" items="${product}">
+		<c:forEach var="order" items="${person}">
 			<tr>
-				<td width="150px">${product.productName}</td>
-				<td width="250px">${product.description}</td>
-				<td width="120px">${product.price}</td>
-				<td width="100px">${product.productType}</td>
-				<td>
-					<form action="../prod/${product.id}" method="get">
-						<button type="submit">Edit</button>
-					</form>
-				</td>
-				<td><form action="../prod/del/${product.id}">
+				<td width="150px">${order.id}</td>
+				<td width="150px">${order.orderDate}</td>
+				<td width="230px">${order.orderLines}</td>				 
+				 
+				<td><form action="../order/del/${order.id}">
 						<button type="submit">Delete</button>
 					</form></td>
 
 			</tr>
 		</c:forEach>
 	</table>
-	 <form action="../prod/add/">
-			<button type="submit">Add a Product</button>
+	 <form action="../order/add/">
+			<button type="submit">Add an Order</button>
 		</form> 
 
 	<!--<a href="../prod/add"> Add a Product</a>  -->

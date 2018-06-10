@@ -35,6 +35,21 @@ public class Order {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Order() {
+		super();
+	}
+
+	public Order(Date orderDate, List<Orderline> orderLines, Person person) {
+		super();
+		this.orderDate = orderDate;
+		this.orderLines = orderLines;
+		this.person = person;
+	}
+
 	public List<Orderline> getOrderLines() {
 		return Collections.unmodifiableList(orderLines);
 	}

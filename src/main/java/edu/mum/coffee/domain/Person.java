@@ -17,10 +17,28 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private String email;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Address address;
 	private String phone;
 	private boolean enable;
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Person() {
+		super();
+	}
+
+	public Person(String firstName, String lastName, String email, Address address, String phone, boolean enable) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+		this.enable = enable;
+	}
 
 	public long getId() {
 		return id;
