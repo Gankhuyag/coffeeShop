@@ -3,8 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" >
+ 
+<script type="text/javascript">
 $(document).ready(function() {
 
 	var contextRoot = "/"+ window.location.pathname.split('/')[1];
@@ -55,10 +55,13 @@ $(document).ready(function() {
 				<td width="250px">${product.description}</td>
 				<td width="120px">${product.price}</td>
 				<td width="100px">${product.productType}</td>
-				<td width="100px"><a href="prod/${product.id}"> edit</a></td>
-				<td><button onclick="deleteProduct(${product.id})">Delete</button></td>				 
-				<td width="100px"><a href="del/${product.id}">
-						delete</a></td>
+				
+				   
+				<td>
+				<form action="../prod/${product.id}" method="get">
+					<button type="submit">Edit</button>
+				</form>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

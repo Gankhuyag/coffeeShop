@@ -22,11 +22,11 @@ public class ProductService   {
 		return productRepository.save(product);
 	}
 
-	public void delete(Long id) {
+	public void delete(int id) {
 		productRepository.delete(id);
 	}
 
-	public Product getProduct(Long id) {
+	public Product getProduct(int id) {
 		return  (Product) productRepository.findOne(id);
 	}
 
@@ -34,9 +34,10 @@ public class ProductService   {
 		return  (List<Product>) productRepository.findAll() ;
 	}
 	public void update(int id, Product product) {
-		product.setDescription(product.getDescription());
-		product.setProductName(product.getProductName());
-		product.setPrice(product.getPrice());
+		//productRepository.update(id,product);
+		//product.setDescription(product.getDescription());
+		//product.setProductName(product.getProductName());
+		//product.setPrice(product.getPrice());
 	}
 	public List<Product> findByTextSearch(String criteria) {
 		if (!criteria.contains("%")) {

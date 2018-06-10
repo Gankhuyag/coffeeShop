@@ -24,8 +24,8 @@ public class PersonService {
 		return personRepository.findByEmail(email);
 	}
 
-	public Person findById(Long id) {
-		return personRepository.findOne(id);
+	public Person findById(int id) {
+		return personRepository.findOne((long) id);
 	}
 
 	public void removePerson(Person person) {

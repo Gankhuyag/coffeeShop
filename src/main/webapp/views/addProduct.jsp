@@ -28,7 +28,15 @@
 				<td>Price:</td>
 				<td><form:input path="price" /></td>
 				<td><form:errors path="price" cssClass="color : red;" /></td>
-			</tr>			 
+			</tr>
+			<tr>
+				<td>Product Type:</td>
+				<td><form:select path="productType"
+				items="${prodType}" /></td>
+				<td><form:errors path="productType" cssClass="color : red;" /></td>
+			</tr>
+		 
+						 
 		</table>
 		<input type="submit" />
 
