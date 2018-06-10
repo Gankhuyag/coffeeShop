@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,65 +23,73 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.mum.coffee.domain.Address;
+import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.domain.ProductType;
+import edu.mum.coffee.service.PersonService;
 import edu.mum.coffee.service.ProductService;
 
 
 @Controller 
-public class ProductController {
+public class PersonController {
 
 	@Resource
-	private ProductService productService;
+	private PersonService personService;
 	
 	//@RequestMapping("/")
 	public String redirectRoot() {
-		return "redirect:/prod";
+		return "redirect:/person";
 	}
 
 
-	@RequestMapping(value="/prod", method=RequestMethod.GET)
-	public String getList(Model model) {
+	@RequestMapping(value="/person", method=RequestMethod.GET)
+	public String getListPerson(Model model) {
 		
-		model.addAttribute("product", productService.getAllProduct());
+		model.addAttribute("person", personService.getAllPerson());
 	
 		//return productService.getAllProduct();
-		return "prodList";
+		return "personList";
 	}
 	
-	@RequestMapping(value="/prod/add", method=RequestMethod.GET)
-	public String getAll(Model model) {
-		Product product=new Product();
-		List<ProductType> types = Arrays.asList(ProductType.values());
-		model.addAttribute("product", product);
-		model.addAttribute("prodType",types);
-		return "addProduct";
+	@RequestMapping(value="/person/add", method=RequestMethod.GET)
+	public String getAllPerson(Model model) {
+		Person person=new Person();
+		//List<ProductType> types = Arrays.asList(ProductType.values());
+		model.addAttribute("person", person);
+		//model.addAttribute("prodType",types);
+		return "addPerson";
 	}
 	
-	@RequestMapping(value="/prod/add", method=RequestMethod.POST)
-	public String add(Product product) {
-		productService.save(product);
-		return "redirect:/prod";
+	@RequestMapping(value="/person/add", method=RequestMethod.POST)
+	public String addPerson(Person person) {
+		personService.savePerson(person);
+		return "redirect:/person";
 	}
 
-	@RequestMapping(value="/prod/{id}", method=RequestMethod.GET)
-	public String get(@PathVariable int id, Model model) {
-		model.addAttribute("product", productService.getProduct(id));
-		List<ProductType> types = Arrays.asList(ProductType.values());	 
-		model.addAttribute("prodType",types);
-		return "prodDetail";
+	@RequestMapping(value="/person/{id}", method=RequestMethod.GET)
+	public String getPerson(@PathVariable int id, Model model) {
+		model.addAttribute("person", personService.getPerson(id));
+		//List<ProductType> types = Arrays.asList(ProductType.values());	 
+		//model.addAttribute("prodType",types);
+		return "personDetail";
 	}
 	
-	@RequestMapping(value="/prod/{id}", method=RequestMethod.POST)
+	@RequestMapping(value="/person/{id}", method=RequestMethod.POST)
 	//@PutMapping("/prod/{id}")
-	public String update( @PathVariable("id") int id, Product product  ) {
+	public String updatePerson( @PathVariable("id") int id, Person person, Address address  ) {
+	//public ResponseEntity<Person> updatePerson( @PathVariable("id") int id, Person person, Address address  ) {
+			
 		//Product prd=productService.findById(id);
 		//prd.setProductName(product.getProductName());
 		//prd.setDescription(product.getDescription());
 		//prd.setPrice(product.getPrice());
 		//prd.setProductType(product.getProductType());
-		product.setId(id);
-		productService.save(product);
+		person.setId(id);
+		person.setAddress(address);
+		person.getAddress().setId(id);
+		//person.setFirstName(firstName);
+		personService.savePerson(person);
 		//productService.delete(id);
 		//redirectAttributes.addFlashAttribute("product",product);
 		
@@ -87,8 +97,9 @@ public class ProductController {
 		//productService.update(id, product); // car.id already set by binding
 		//return  "prodList";
 		//
-		return "redirect:/prod/";
-		
+		//return person.getFirstName();//"redirect:/person/";
+		return "redirect:/person";
+		//return new ResponseEntity<Person>(person, HttpStatus.CREATED);
 	}
 
 	/*@RequestMapping(value="/updateEmployee/{id}",method=RequestMethod.PUT)
@@ -101,10 +112,10 @@ public class ProductController {
     }*/
 	
 	
-	@RequestMapping(value="/prod/del/{id}")
-	public String deleteProd( Product product) {
-		productService.delete(product);
-		return "redirect:/prod";
+	@RequestMapping(value="/person/del/{id}")
+	public String deletePerson( Person person) {
+		personService.removePerson(person); 
+		return "redirect:/person";
 	}
 
 /*	@ExceptionHandler(value=NoSuchResourceException.class)

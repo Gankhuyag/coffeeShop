@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ include file="usermenu.jsp"%>	
+<%@ include file="usermenu.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
 <html>
 <head>
@@ -9,14 +9,14 @@
 <title>Add a Product</title>
 </head>
 <body>
-	<form:form modelAttribute="product" action="add" method="post">
+	<form:form modelAttribute="product" action="../add" method="post">
 		<p>
 			<form:errors path="*" cssStyle="color : red;" />
 		</p>
 		<table>
 			<tr>
 				<td>Product Name:</td>
-				<td><form:input path="productName" /></td>				 
+				<td><form:input path="productName" /></td>
 				<td><form:errors path="productName" cssClass="color : red;" /></td>
 			</tr>
 			<tr>
@@ -31,17 +31,16 @@
 			</tr>
 			<tr>
 				<td>Product Type:</td>
-				<td><form:select path="productType"
-				items="${prodType}" /></td>
+				<td><form:select path="productType" items="${prodType}" /></td>
 				<td><form:errors path="productType" cssClass="color : red;" /></td>
 			</tr>
-		 
-						 
-		</table>
-		<input type="submit" />
 
+
+		</table>
+		<input type="submit" value="Submit"/>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 	</form:form>
 </body>
 </html>
- <%@ include file="footer.jsp"%>	
- 
+<%@ include file="footer.jsp"%>

@@ -38,8 +38,9 @@
 		<input type="submit" value="update" />
 		 <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 	</form:form>
-	<form action="../prod/del/${product.id}" method="post">
+	<form action="del/${product.id}" method="post">
 		<button type="submit">Delete</button>
+		 <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 	</form>
 </body>
 </html>

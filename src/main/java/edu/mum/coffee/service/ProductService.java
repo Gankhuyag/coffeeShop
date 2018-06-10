@@ -22,8 +22,8 @@ public class ProductService   {
 		return productRepository.save(product);
 	}
 
-	public void delete(int id) {
-		productRepository.delete(id);
+	public void delete(Product product) {
+		productRepository.delete(product);
 	}
 
 	public Product getProduct(int id) {

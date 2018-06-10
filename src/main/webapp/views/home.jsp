@@ -18,5 +18,6 @@
 		The only user is "<b>super</b>" and the password is "<b>pw</b>"
 	<p>
 		<a href="<c:url value="/secure" />"> Go to Secure Area </a>
+	 
 </body>
 </html>

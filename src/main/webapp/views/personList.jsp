@@ -48,26 +48,31 @@
 <body>
 	<h2>Products currently in the Coffee shop</h2>
 	<table>
-		<c:forEach var="product" items="${product}">
+		<c:forEach var="person" items="${person}">
 			<tr>
-				<td width="150px">${product.productName}</td>
-				<td width="250px">${product.description}</td>
-				<td width="120px">${product.price}</td>
-				<td width="100px">${product.productType}</td>
+				<td width="150px">${person.firstName}</td>
+				<td width="150px">${person.lastName}</td>
+				<td width="230px">${person.email}</td>
+				<td width="100px">${person.address.city}</td>
+				<td width="100px">${person.address.state}</td>
+				<td width="100px">${person.address.country}</td>
+				<td width="100px">${person.address.zipcode}</td>
+				<td width="100px">${person.phone}</td>
+				
 				<td>
-					<form action="../prod/${product.id}" method="get">
+					<form action="../person/${person.id}" method="get">
 						<button type="submit">Edit</button>
 					</form>
 				</td>
-				<td><form action="../prod/del/${product.id}">
+				<td><form action="../person/del/${person.id}">
 						<button type="submit">Delete</button>
 					</form></td>
 
 			</tr>
 		</c:forEach>
 	</table>
-	 <form action="../prod/add/">
-			<button type="submit">Add a Product</button>
+	 <form action="../person/add/">
+			<button type="submit">Add a Person</button>
 		</form> 
 
 	<!--<a href="../prod/add"> Add a Product</a>  -->
