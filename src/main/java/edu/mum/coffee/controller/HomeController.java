@@ -22,5 +22,9 @@ public class HomeController {
 	public String securePage() {
 		return "secure";
 	}
+<<<<<<< HEAD
 	 // changes made
+=======
+	 
+>>>>>>> 0547cf1d3a647b76ff0949840aa7793dbc6fc09b
 }
