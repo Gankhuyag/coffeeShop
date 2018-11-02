@@ -22,5 +22,5 @@ public class HomeController {
 	public String securePage() {
 		return "secure";
 	}
-	 
+	 // changes made
 }
